@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Search Post Office">
+        <div class="spinner">
+            <template if:true={isLoading}>
+                 <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                 </lightning-spinner>
+            </template>
+        </div>
+        <lightning-input class="slds-m-around_medium" pattern="[0-9]{6}" label="Enter the pin code"
+            onchange={pinCodeHandler}>
+        </lightning-input>
+        <lightning-button class="slds-p-around_medium" label="View available post offices" variant="brand"
+            onclick={viewPostOffice}></lightning-button>
+        <template if:true={result}>
+            <div class="table">
+            <lightning-datatable class="slds-p-around_large" key-field="Name" data={result} columns={columns}
+                hide-checkbox-column>
+            </lightning-datatable>
+        </div>
+        </template>
+    </lightning-card>
+</template>
